@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  load_balancer:
+    build: .
+    container_name: load_balancer
+    ports:
+      - "5050:5000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
+    networks:
+      net1:
+        aliases:
+          - load_balancer
+    depends_on:
+      - server1
+      - server2
+      - server3
+
+  server1:
+    build: ../server
+    container_name: Server1
+    environment:
+      - SERVER_ID=Server1
+    networks:
+      net1:
+        aliases:
+          - Server1
+
+  server2:
+    build: ../server  
+    container_name: Server2
+    environment:
+      - SERVER_ID=Server2
+    networks:
+      net1:
+        aliases:
+          - Server2
+
+  server3:
+    build: ../server
+    container_name: Server3
+    environment:
+      - SERVER_ID=Server3
+    networks:
+      net1:
+        aliases:
+          - Server3
+
+networks:
+  net1:
+    driver: bridge
