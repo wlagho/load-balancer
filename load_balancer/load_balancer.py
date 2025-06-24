@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 class LoadBalancer:
     def __init__(self):
-        self.hash_ring = HashRing(num_nodes=0, ring_size=512, replicas=50)
+        self.hash_ring = HashRing(num_nodes=0, ring_size=512, replicas=100)
         self.servers = {}  # hostname -> node_id
         self.node_to_hostname = {}  # node_id -> hostname
         self.next_node_id = 0
