@@ -4,7 +4,7 @@ import os
 app = Flask(__name__)
 
 # Read NODE_ID from environment variable
-NODE_ID = os.getenv("NODE_ID", "Unknown")
+NODE_ID = os.getenv("SERVER_ID", "Unknown")
 
 @app.route('/home', methods=['GET'])
 def home():
