@@ -47,12 +47,6 @@ cover/
 instance/
 .webassets-cache
 
-# Scrapy stuff:
-.scrapy
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
 # PEP 582;
 __pypackages__/
 
